@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon >
+    <tabs>
+     
+      <tab idMso="TabAddIns" label="Seafile" >
+
+        <group id="Upload" label="Seafile"  autoScale="false" >
+          
+          <button id="uploadFile"
+                  size="large"
+                  getLabel="GetLabel"
+                  getScreentip="GetScreentip"
+                  getImage="GetImage"
+                  
+                  />
+       
+          <button id="addLink"
+                   size="large"
+                  getLabel="GetLabel"
+                  getScreentip="GetScreentip"
+                  getImage="GetImage"
+                  onAction="AddLink_OnAction"
+                  />
+          <button id="setting"
+                  
+                  size="large"
+                  getLabel="GetLabel"
+                  getScreentip="GetScreentip"
+                  getImage="GetImage"
+                  onAction="Setting_OnAction"
+                  />
+          <button id="about"
+                  size="large"
+                 getLabel="GetLabel"
+                 getScreentip="GetScreentip"
+                 getImage="GetImage"
+                 onAction="About_OnAction"
+                  />
+
+        </group>
+
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
+

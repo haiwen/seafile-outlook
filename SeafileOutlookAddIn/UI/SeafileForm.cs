@@ -12,6 +12,8 @@ using static SeafileOutlookAddIn.SeafileDir;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Globalization;
+using System.Threading;
 
 namespace SeafileOutlookAddIn.UI
 {
@@ -33,8 +35,11 @@ namespace SeafileOutlookAddIn.UI
         public string ShareLink { set; get; }
         SeafileSession session;
         IList<SeafLibrary> seafLibrary = null;
-        public SeafileForm()
+        public SeafileForm(int lcid)
         {
+            CultureInfo c = Thread.CurrentThread.CurrentUICulture;
+            if (c.LCID != lcid)
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(lcid);
             InitializeComponent();
             //this.seafiledirData.SeafileDataTable.AddSeafileDataTableRow("1","Test", "", "", "1");
 

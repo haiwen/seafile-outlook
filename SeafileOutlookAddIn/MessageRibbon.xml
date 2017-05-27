@@ -12,7 +12,7 @@
                   getLabel="GetLabel"
                   getScreentip="GetScreentip"
                   getImage="GetImage"
-                  
+                   onAction="UploadFile_OnAction"
                   />
        
           <button id="addLink"

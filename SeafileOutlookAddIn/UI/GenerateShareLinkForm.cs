@@ -11,6 +11,7 @@ using SeafileClient;
 using System.Threading;
 using System.Collections.Concurrent;
 using Newtonsoft.Json.Linq;
+using SeafileClient.Types;
 
 namespace SeafileOutlookAddIn.UI
 {
@@ -32,7 +33,10 @@ namespace SeafileOutlookAddIn.UI
         public GenerateShareLinkForm(SeafileSession session, String libraryID, String path)
         {
             InitializeComponent();
-        
+
+            tbPassword.Enabled = false;
+            tbPasswordR.Enabled = false;
+            tbExpireDay.Enabled = false;
 
             //this.tbPassword.AutoSize = false;
             //this.tbPassword.Size = new System.Drawing.Size(this.tbPassword.Size.Width, this.tbPassword.Size.Height + 4);
@@ -109,10 +113,14 @@ namespace SeafileOutlookAddIn.UI
             this.UseWaitCursor = true;
             try
             {
-                var resultGetFileDetail = await _session.GetFileDetail(_libraryID, _path, tokenSource.Token);
+                //var resultGetFileDetail = await _session.GetFileDetail(_libraryID, _path, tokenSource.Token);
 
-                if (resultGetFileDetail != null)
-                {
+                //if (resultGetFileDetail != null)
+                //{
+                    //var resultCreatShareLink = await _session.CreatShareLink(resultGetFileDetail, tokenSource.Token, strPassword, strExpire);
+                    SeafDirEntry resultGetFileDetail = new SeafDirEntry();
+                    resultGetFileDetail.LibraryId = _libraryID;
+                    resultGetFileDetail.Path = _path;
                     var resultCreatShareLink = await _session.CreatShareLink(resultGetFileDetail, tokenSource.Token, strPassword, strExpire);
                     if (!string.IsNullOrEmpty(resultCreatShareLink))
                     {
@@ -126,7 +134,7 @@ namespace SeafileOutlookAddIn.UI
                         }
 
                     }
-                }
+                //}
 
             }
             catch (System.OperationCanceledException ex)
@@ -178,6 +186,32 @@ namespace SeafileOutlookAddIn.UI
                 {
                     e.Handled = true;
                 }
+            }
+        }
+
+        private void cbPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbPassword.Checked)
+            {
+                tbPassword.Enabled = true;
+                tbPasswordR.Enabled = true;
+            }
+            else
+            {
+                tbPassword.Enabled = false;
+                tbPasswordR.Enabled = false;
+            }
+        }
+
+        private void cbExpire_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbExpire.Checked)
+            {
+                tbExpireDay.Enabled = true;
+            }
+            else
+            {
+                tbExpireDay.Enabled = false;
             }
         }
     }

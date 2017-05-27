@@ -33,6 +33,7 @@ namespace SeafileOutlookAddIn
     public class MessageRibbon : Office.IRibbonExtensibility
     {
         private Office.IRibbonUI ribbon;
+        public int LCID { set; get; }
 
         public MessageRibbon()
         {
@@ -157,7 +158,7 @@ namespace SeafileOutlookAddIn
                 //We would have preferred a consistent design through remoting, but
                 //the about dialog is so simple that there is no reason to open it through remoting
                 //considering we already have the two modes respectively for settings and options
-                UI.UploadForm frmUploadForm = new UI.UploadForm();
+                UI.UploadForm frmUploadForm = new UI.UploadForm(this.LCID);
                 frmUploadForm.ShowDialog(objActiveWindow);
                 if (frmUploadForm.DialogResult == System.Windows.Forms.DialogResult.OK)
                 {
@@ -186,7 +187,7 @@ namespace SeafileOutlookAddIn
                 //We would have preferred a consistent design through remoting, but
                 //the about dialog is so simple that there is no reason to open it through remoting
                 //considering we already have the two modes respectively for settings and options
-                UI.SeafileForm frmSeafileForm = new UI.SeafileForm();
+                UI.SeafileForm frmSeafileForm = new UI.SeafileForm(this.LCID);
                 frmSeafileForm.ShowDialog(objActiveWindow);
                 if (frmSeafileForm.DialogResult == System.Windows.Forms.DialogResult.OK)
                 {
@@ -215,7 +216,7 @@ namespace SeafileOutlookAddIn
                 //We would have preferred a consistent design through remoting, but
                 //the about dialog is so simple that there is no reason to open it through remoting
                 //considering we already have the two modes respectively for settings and options
-                UI.SettingForm frmSetting = new UI.SettingForm();
+                UI.SettingForm frmSetting = new UI.SettingForm(this.LCID);
                 frmSetting.ShowDialog(objActiveWindow);
             }
             catch (Exception Ex)
@@ -237,7 +238,7 @@ namespace SeafileOutlookAddIn
             //We would have preferred a consistent design through remoting, but
             //the about dialog is so simple that there is no reason to open it through remoting
             //considering we already have the two modes respectively for settings and options
-            UI.AboutForm frmSetting = new UI.AboutForm();
+            UI.AboutForm frmSetting = new UI.AboutForm(this.LCID);
             frmSetting.ShowDialog(objActiveWindow);
 
 

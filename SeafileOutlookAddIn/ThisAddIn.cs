@@ -7,7 +7,8 @@ using Outlook = Microsoft.Office.Interop.Outlook;
 using Office = Microsoft.Office.Core;
 using log4net.Config;
 using SeafileOutlookAddIn.Utils;
-
+using System.Threading;
+using System.Globalization;
 
 namespace SeafileOutlookAddIn
 {
@@ -15,6 +16,8 @@ namespace SeafileOutlookAddIn
     {
         private static readonly log4net.ILog log =
            log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        public int LCID { set; get; }
 
 
         private MessageRibbon _MessageRibbon;
@@ -36,7 +39,10 @@ namespace SeafileOutlookAddIn
            if (serviceGuid == typeof(Office.IRibbonExtensibility).GUID)
             {
                 if (_MessageRibbon == null)
+                {
                     _MessageRibbon = new MessageRibbon();
+                    _MessageRibbon.LCID = this.LCID;
+                }
                 return _MessageRibbon;
             }
 
@@ -73,7 +79,15 @@ namespace SeafileOutlookAddIn
             this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
         }
 
-        
+        protected override Office.IRibbonExtensibility CreateRibbonExtensibilityObject()
+        {
+            Outlook.Application app = this.GetHostItem<Outlook.Application>(typeof(Outlook.Application), "Application");
+            this.LCID = app.LanguageSettings.get_LanguageID(Office.MsoAppLanguageID.msoLanguageIDUI);
+           // CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(lcid);
+           ;
+            return base.CreateRibbonExtensibilityObject();
+
+        }
         #endregion
     }
 }

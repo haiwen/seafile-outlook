@@ -13,7 +13,10 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Security;
 using SeafileClient;
-using SeafileOutlookAddIn.Utils;
+using System.Threading;
+using System.Globalization;
+using Outlook = Microsoft.Office.Interop.Outlook;
+using Office = Microsoft.Office.Core;
 
 namespace SeafileOutlookAddIn.UI
 {
@@ -23,9 +26,11 @@ namespace SeafileOutlookAddIn.UI
          log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 
-        public SettingForm()
+        public SettingForm(int lcid)
         {
-           
+            CultureInfo c = Thread.CurrentThread.CurrentUICulture;
+            if(c.LCID != lcid)
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(lcid);
             InitializeComponent();
             //this.tbURL.AutoSize = false;
             //this.tbURL.Size = new System.Drawing.Size(this.tbURL.Size.Width, this.tbURL.Size.Height + 4);
@@ -135,6 +140,7 @@ namespace SeafileOutlookAddIn.UI
 
         private void SettingForm_Load(object sender, EventArgs e)
         {
+            
 
             // Create a file that the application will store user specific data in.
             try

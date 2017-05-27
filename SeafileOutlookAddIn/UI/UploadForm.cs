@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Concurrent;
 using System.Threading;
+using System.Globalization;
 
 namespace SeafileOutlookAddIn.UI
 {
@@ -29,9 +30,17 @@ namespace SeafileOutlookAddIn.UI
 
         public string ShareLink { get; set; }
 
-        public UploadForm()
+        public UploadForm(int lcid)
         {
+            CultureInfo c = Thread.CurrentThread.CurrentUICulture;
+            if (c.LCID != lcid)
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(lcid);
+
             InitializeComponent();
+
+            tbPassword.Enabled = false;
+            tbPasswordR.Enabled = false;
+            tbExpireDay.Enabled = false;
 
             //this.tbFile.AutoSize = false;
             //this.tbFile.Size = new System.Drawing.Size(this.tbFile.Size.Width, this.tbFile.Size.Height + 4);
@@ -391,5 +400,31 @@ namespace SeafileOutlookAddIn.UI
 
             }
         }
+
+        private void cbPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbPassword.Checked)
+            {
+                tbPassword.Enabled = true;
+                tbPasswordR.Enabled = true;
+            }
+            else
+            {
+                tbPassword.Enabled = false;
+                tbPasswordR.Enabled = false;
+            }
+        }
+
+        private void cbExpire_CheckedChanged(object sender, EventArgs e)
+        {    if(cbExpire.Checked)
+            {
+                tbExpireDay.Enabled = true;
+            }
+            else
+            {
+                tbExpireDay.Enabled = false;
+            }
+        }
     }
+    
 }

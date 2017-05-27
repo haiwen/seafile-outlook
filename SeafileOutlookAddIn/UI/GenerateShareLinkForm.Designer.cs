@@ -100,12 +100,14 @@
             resources.ApplyResources(this.cbExpire, "cbExpire");
             this.cbExpire.Name = "cbExpire";
             this.cbExpire.UseVisualStyleBackColor = true;
+            this.cbExpire.CheckedChanged += new System.EventHandler(this.cbExpire_CheckedChanged);
             // 
             // cbPassword
             // 
             resources.ApplyResources(this.cbPassword, "cbPassword");
             this.cbPassword.Name = "cbPassword";
             this.cbPassword.UseVisualStyleBackColor = true;
+            this.cbPassword.CheckedChanged += new System.EventHandler(this.cbPassword_CheckedChanged);
             // 
             // lbShareFile
             // 

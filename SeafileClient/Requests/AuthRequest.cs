@@ -39,8 +39,22 @@ namespace SeafileClient.Requests
         public override HttpRequestMessage GetCustomizedRequest(Uri serverUri)
         {
             try
-            {                                
-                Uri uri = new Uri(serverUri, CommandUri);
+            {
+                Uri uri;
+                if (string.IsNullOrEmpty(serverUri.LocalPath))
+                {
+                    uri = new Uri(serverUri, CommandUri);
+                }
+                else
+                {
+                    string localpath = serverUri.LocalPath;
+                    if (!localpath[localpath.Length - 1].Equals('/'))
+                        localpath += '/';
+
+                    uri = new Uri(serverUri, localpath + CommandUri);
+                }
+
+                //Uri uri = new Uri(serverUri, CommandUri);
 
                 HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, uri);
                 

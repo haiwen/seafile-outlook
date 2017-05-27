@@ -19,8 +19,20 @@ namespace SeafileClient
         /// <param name="request"></param>
         /// <returns></returns>
         public HttpRequestMessage CreateHttpRequestMessage<T>(Uri serverUri, SeafRequest<T> request)
-        {            
-            Uri targetUri = new Uri(serverUri, request.CommandUri);            
+        {
+            Uri targetUri;
+            if (string.IsNullOrEmpty(serverUri.LocalPath))
+            {
+                targetUri = new Uri(serverUri, request.CommandUri);
+            }
+           else
+            {
+                string localpath = serverUri.LocalPath;
+                if (!localpath[localpath.Length - 1].Equals('/'))
+                    localpath += '/';
+
+                targetUri = new Uri(serverUri, localpath+request.CommandUri);
+            }          
 
             switch (request.HttpAccessMethod)
             {

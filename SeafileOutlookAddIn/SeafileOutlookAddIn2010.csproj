@@ -280,6 +280,7 @@
     <Compile Include="Utils\MiscUtils.cs" />
     <Compile Include="Utils\SecureStringUtils.cs" />
     <Compile Include="WindowWrapper.cs" />
+    <EmbeddedResource Include="Properties\Resources.zh-Hans.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

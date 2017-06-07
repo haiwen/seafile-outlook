@@ -134,16 +134,20 @@ namespace SeafileOutlookAddIn
             {
                 case "uploadFile":
 
-                    return Properties.Resources.UploadBtnText + "\r\n";
+                    return Properties.Resources.GetBtnText("UploadBtnText", this.LCID);
+                    //return Properties.Resources.UploadBtnText + "\r\n";
 
                 case "addLink":
 
-                    return Properties.Resources.ShareBtnText + "\r\n";
+                    return Properties.Resources.GetBtnText("ShareBtnText", this.LCID);
+                    //return Properties.Resources.ShareBtnText + "\r\n";
 
                 case "setting":
-                    return Properties.Resources.SettingBtnText + "\r\n";
+                    return Properties.Resources.GetBtnText("SettingBtnText", this.LCID);
+                    //return Properties.Resources.SettingBtnText + "\r\n";
                 case "about":
-                    return Properties.Resources.AboutBtnText + "\r\n";
+                    return Properties.Resources.GetBtnText("AboutBtnText", this.LCID);
+                    //return Properties.Resources.AboutBtnText + "\r\n";
                 default:
                     return "";
             }

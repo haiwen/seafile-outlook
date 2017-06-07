@@ -117,64 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutBtnText" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="AccessUrl" xml:space="preserve">
+    <value>访问URL</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="ConfigParseError" xml:space="preserve">
-    <value>Configuration File Parse Failed.</value>
+    <value>设置文件解析错误</value>
   </data>
   <data name="EmptyPassword" xml:space="preserve">
-    <value>Password is empty!</value>
+    <value>密码为空</value>
   </data>
   <data name="EmptyUploadFile" xml:space="preserve">
-    <value>Uplaod File is empty！</value>
+    <value>上传文件不能为空</value>
+  </data>
+  <data name="ExceptionFileNotFound" xml:space="preserve">
+    <value>找不到"{0}"。</value>
+  </data>
+  <data name="ExceptionNoMoreThanOnePackageAsAttachment" xml:space="preserve">
+    <value>不支持将多个包附加至一封Outlook电子邮件。</value>
   </data>
   <data name="InvalidCredentials" xml:space="preserve">
-    <value>Account or Password Error.</value>
+    <value>用户名或密码错误</value>
   </data>
   <data name="MessageBoxErrorTitle" xml:space="preserve">
-    <value>Error</value>
+    <value>错误</value>
   </data>
   <data name="MessageBoxInfoTitle" xml:space="preserve">
-    <value>Info</value>
+    <value>提示</value>
   </data>
   <data name="MessageBoxWarningTitle" xml:space="preserve">
-    <value>Warn</value>
+    <value>警告</value>
   </data>
   <data name="OutlookShare" xml:space="preserve">
-    <value>Share Link:</value>
+    <value>分享链接：</value>
   </data>
   <data name="PasswordNotMatch" xml:space="preserve">
-    <value>Password not match</value>
+    <value>密码输入不一致</value>
   </data>
   <data name="PasswordTooShort" xml:space="preserve">
-    <value>Password too short!(at least 8 characters)</value>
+    <value>密码（至少8个字符）</value>
   </data>
   <data name="ReadFileError" xml:space="preserve">
-    <value>Read File Error or File not exist!</value>
+    <value>文件不存在或文件读取错误！</value>
   </data>
   <data name="SetAccount" xml:space="preserve">
-    <value>Please set account first!</value>
-  </data>
-  <data name="SharelinkParseError" xml:space="preserve">
-    <value>Share Link Parse Error</value>
-  </data>
-  <data name="SharePassword" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="ShareFile" xml:space="preserve">
-    <value>Share File</value>
-  </data>
-  <data name="AboutBtnText" xml:space="preserve">
-    <value>About</value>
+    <value>请先设置账号</value>
   </data>
   <data name="SettingBtnText" xml:space="preserve">
-    <value>Setting</value>
+    <value>设置</value>
   </data>
   <data name="ShareBtnText" xml:space="preserve">
-    <value>Add</value>
+    <value>添加</value>
+  </data>
+  <data name="ShareFile" xml:space="preserve">
+    <value>分享</value>
+  </data>
+  <data name="SharelinkParseError" xml:space="preserve">
+    <value>分享链接数据解析错误</value>
+  </data>
+  <data name="SharePassword" xml:space="preserve">
+    <value> 密码</value>
+  </data>
+  <data name="UploadBtn" xml:space="preserve">
+    <value>上 传</value>
   </data>
   <data name="UploadBtnText" xml:space="preserve">
-    <value>Upload</value>
+    <value>上传</value>
   </data>
 </root>

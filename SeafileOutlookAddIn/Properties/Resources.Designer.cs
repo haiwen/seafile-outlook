@@ -196,6 +196,12 @@ namespace SeafileOutlookAddIn.Properties {
             }
         }
         
+        internal static string GetBtnText(string btnText, int lcid)
+        {
+            resourceCulture = new global::System.Globalization.CultureInfo(lcid);
+            return ResourceManager.GetString(btnText, resourceCulture);            
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to 警告.
         /// </summary>
